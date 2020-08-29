@@ -1,11 +1,27 @@
-#prueba
+/*#prueba
 {
-    position: fixed;
-   
+    
+  position: fixed;
+  width: 40%;
+    text-align: left;
+    background-color: green;
+
 }
+
 
 #prueba2
 {
-    position: relative;
+    
+    width: 50%;
     float: right;
+   margin-right: 10%;
+   background-color: red;
 }
+
+#prueba3
+{
+    padding-left: 20%;
+}
+*/
+
+
