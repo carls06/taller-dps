@@ -5,19 +5,23 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './components/list/list.component';
 import { CardComponent } from './components/card/card.component';
 
-import {FormsModule} from '@angular/forms'
+import {FormsModule} from '@angular/forms';
+import { FilterPipe } from './pipes/filter.pipe'
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    CardComponent
+    CardComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    FilterPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

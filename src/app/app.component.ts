@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Taller } from './models/cliente.model';
+import { Cliente } from './models/cliente.model';
 import {  TallerService } from './services/taller.service';
 import { UsuarioModel } from './models/usuario.model';
 import { NgModel, NgForm } from '@angular/forms';
@@ -11,10 +11,21 @@ import { NgModel, NgForm } from '@angular/forms';
 })
 
 
-  
-export class AppComponent implements OnInit{
 
-  clientes:UsuarioModel=new UsuarioModel();
+export class AppComponent implements OnInit{
+  
+  title = 'taller';
+
+  cliente = {
+    nombre: '',
+    dui: '',
+    vehiculo: ''
+  }
+
+  dui: string =  '';
+
+  clientes: Cliente[] = [];
+
 
   constructor(private taller:TallerService)
   {
@@ -25,20 +36,18 @@ export class AppComponent implements OnInit{
   {
     if(localStorage.getItem('data'))
     {
-      this.clientes = this.taller.clientes;
+      this.clientes = this.taller.cargarStorage();
+      console.log(this.clientes);
+    }else{
+      console.log("no esta");
     }
   }
 
   guardar(forma:NgForm)
   {
     console.log(forma.value)
-  }
-  
-
-
-  title = 'taller';
-
-  
+    this.taller.crearCliente( forma.value );
+  }  
 
 }
 

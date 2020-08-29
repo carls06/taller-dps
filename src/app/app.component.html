@@ -8,7 +8,7 @@
     <div class="form-group ">
       <label class="col-4 col-form-label">Buscador</label>
       <div class="col-6">
-        <input class="form-control" type="text" placeholder="Busque por medio de DUI">
+        <input class="form-control" type="text" placeholder="Busque por medio de DUI" [ngModel] = "dui" >
 
       </div>
     </div>
@@ -20,78 +20,64 @@
 <div class="container-fluid">
 
   <div class="row">
-    <form  ngSubmit="guardar(forma)" #forma="ngForm"  autocomplete="off">
-      <div id="prueba" class="col">
-        <div id="prueba3" class="form-group ">
-          <label class="col-2 col-form-label ">Nombre:</label>
-          <div class="col-6">
-            <input  class="form-control"
-                    type="text" 
-                    placeholder="Ingrese nombre completo"                    
-                    name="nombre"
-                    [(ngModel)]="clientes.nombre">
 
+    <div class="col-2">
+      <form  (ngSubmit)="guardar(forma)" #forma="ngForm"  autocomplete="off">
+          <div id="prueba3" class="form-group">
+            <label class="col-2 col-form-label ">Nombre:</label>
+              <input  class="form-control"
+                      type="text" 
+                      [ngModel]="cliente.nombre"
+                      placeholder="Ingrese nombre completo"                    
+                      name="nombre"
+                      #nombre="ngModel">
           </div>
-        </div>
+  
+          <div id="prueba3" class="form-group ">
+            <label class="col-2 col-form-label">DUI:</label>
+              <input class="form-control" 
+                     type="text" 
+                     placeholder="Ingrese numero de DUI"            
+                     name="dui"
+                     [(ngModel)]="cliente.dui"
+                     required>
+  
+  
+            </div>
 
-        <div id="prueba3" class="form-group ">
-          <label class="col-2 col-form-label">DUI:</label>
+          <div id="prueba3" class="form-group ">
+            <label class="col-2 col-form-label">Vehiculo:</label>
+              <input class="form-control" 
+                     type="text" 
+                     placeholder="Ingrese vehiculo" 
+                     name="Vehiculo"
+                    [(ngModel)]="cliente.vehiculo">
+  
+  
+            </div>
+  
+          <!--<div id="prueba3"  class="form-group ">
+          <label class="col-4 col-form-label">Costo de Reparacion:</label>
           <div class="col-6">
-            <input class="form-control" 
-                   type="text" 
-                   placeholder="Ingrese numero de DUI"            
-                   name="dui"
-                   [(ngModel)]="cliente.dui"
-                   required>
->
-
+            <input class="form-control" type="text" placeholder="Ingrese el costo de reparacion en $"
+              formControlName="nombre">
+  
           </div>
-        </div>
-
-        <div id="prueba3" class="form-group ">
-          <label class="col-2 col-form-label">Vehiculo:</label>
-          <div class="col-6">
-            <input class="form-control" 
-                   type="text" 
-                   placeholder="Ingrese vehiculo" 
-                   name="Vehiculo"
-                  [(ngModel)]="cliente.vehiculo">
-
-
-          </div>
-        </div>
-
-        <!--<div id="prueba3"  class="form-group ">
-        <label class="col-4 col-form-label">Costo de Reparacion:</label>
-        <div class="col-6">
-          <input class="form-control" type="text" placeholder="Ingrese el costo de reparacion en $"
-            formControlName="nombre">
-
-        </div>
-      </div> -->
-
-
-
-        <div id="prueba3" class="form-group ">
-
-          <div class="col-6">
-            <button type="submit" class="btn btn-block btn-outline-primary">Ingresar</button>
-          </div>
-
-        </div>
-
-      </div>
-
-    </form>
+        </div> -->
+  
+  
+  
+          <div id="prueba3" class="form-group ">
+              <button type="submit"  class="btn btn-block btn-outline-primary">Ingresar</button>
+            </div> 
+      </form>
+    </div>
 
 
     <div class="col">
-
-
-
-      <div id="prueba2" class="row">
-        <div class="col-6" *ngFor="let item of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
-          <app-card>
+      <div id="prueba2" class="row anyClass">
+        <div class="col-4" *ngFor="let item of clientes | filter : dui">
+          <app-card [cliente] = "item">
           </app-card>
         </div>
       </div>

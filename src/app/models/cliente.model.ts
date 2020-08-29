@@ -1,14 +1,14 @@
-export class Taller {
+export class Cliente {
     nombre: string;
     dui: string;
     vehiculo: string;
     costo?: number;
     
-    constructor(dui:string){
+    /*constructor(dui:string){
         this.dui=dui;
         
 
-    }
+    } */
 
 
 }
