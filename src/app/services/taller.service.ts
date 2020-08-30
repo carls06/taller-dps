@@ -55,16 +55,18 @@ export class TallerService {
               return dato;
             });
          
-         
+           // console.log(this.clienteTem);
+            
+        return this.crearCliente(this.clienteTem[0]);
 
-         return this.clienteTem;
+         //return this.clienteTem;
 
 
     }
 
 
 
-    monto:number;
+    monto:number=0;
     calculoPago(pago:number,dui:string){
 
         this.clientes.map((dato:Cliente)=>{
@@ -89,6 +91,9 @@ export class TallerService {
                 
             }
         });
+
+        console.log(this.monto);
+        
 
         return this.monto;
     }

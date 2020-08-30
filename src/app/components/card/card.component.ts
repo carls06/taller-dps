@@ -19,13 +19,14 @@ export class CardComponent implements OnInit {
   }
 
   monto:number;
+  aa:number;
   
 
 
   pago(forma:NgForm){
       console.log('soy el pago');
       
-     // console.log( this.tallerService_.actualizarVisitas(this.cliente.dui));
+      this.tallerService_.actualizarVisitas(this.cliente.dui);
 
      
      console.log(forma.value);
@@ -33,9 +34,9 @@ export class CardComponent implements OnInit {
      
      
 
-     this.monto=this.tallerService_.calculoPago(forma.value,this.cliente.dui);
+     this.aa=this.tallerService_.calculoPago(forma.value.valor,this.cliente.dui);
 
-     console.log(this.monto);
+     //console.log(this.monto);
      
 
   }
