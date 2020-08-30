@@ -1,21 +1,22 @@
 <div class="card border-info mb-3">
-    <div class="card-header"> {{ cliente.nombre }} <button type="button" class="btn btn-primary float-right" disabled>
+    <div class="card-header"> Nombre: {{ cliente.nombre }} <button type="button" class="btn btn-primary float-right" disabled>
             Visitas <span class="badge badge-light">{{cliente.visita}}</span>
             <span class="sr-only">unread messages</span>
         </button> </div>
     <div class="card-body text-info">
-        <h5 class="card-title">{{ cliente.dui }}</h5>
+        <h5 class="card-title">Dui de cliente: {{ cliente.dui }}</h5>
 
         <form (ngSubmit)="pago(forma)" #forma="ngForm" autocomplete="off">
             <div class="form-group">
-                <label class="col-form-label">Costo de Reparacion:</label>
+                <label class="col-form-label">Costo de Reparacion en ($):</label>
 
                 <input class="form-control"
                        type="text" 
                        placeholder="Ingrese el costo de reparacion en $"
                        [ngModel]="monto"
                        name="valor"
-                       #valor="ngModel">
+                       #valor="ngModel"
+                       required>
 
 
             </div>
@@ -42,7 +43,8 @@
 
 
         </form>
-        <label class="col-form-label">Total a pagar: {{aa}}</label>
+        <label class="col-form-label">Total a pagar ($) : {{aa}}</label>
 
     </div>
 </div>
+
