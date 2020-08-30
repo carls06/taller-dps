@@ -1,8 +1,48 @@
 <div class="card border-info mb-3">
-    <div class="card-header"> {{ cliente.nombre }} <span class="badge badge-danger float-right">Eliminar <i class="fas fa-trash"></i></span> </div>
+    <div class="card-header"> {{ cliente.nombre }} <button type="button" class="btn btn-primary float-right" disabled>
+            Visitas <span class="badge badge-light">{{cliente.visita}}</span>
+            <span class="sr-only">unread messages</span>
+        </button> </div>
     <div class="card-body text-info">
         <h5 class="card-title">{{ cliente.dui }}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+
+        <form (ngSubmit)="pago(forma)" #forma="ngForm" autocomplete="off">
+            <div class="form-group">
+                <label class="col-form-label">Costo de Reparacion:</label>
+
+                <input class="form-control"
+                       type="text" 
+                       placeholder="Ingrese el costo de reparacion en $"
+                       [ngModel]="monto"
+                       name="valor"
+                       #valor="ngModel">
+
+
+            </div>
+
+
+
+            
+
+
+
+            <div class="form-group">
+
+
+                <button type="submit" class="btn btn-outline-primary ">
+                    Pago
+
+                </button>
+
+
+                
+
+
+            </div>
+
+
+        </form>
+        <label class="col-form-label">Total a pagar: {{monto}}</label>
+
     </div>
 </div>

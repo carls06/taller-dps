@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cliente } from '../models/cliente.model';
-import { ReturnStatement } from '@angular/compiler';
+
 
 
 @Injectable({
@@ -8,6 +8,10 @@ import { ReturnStatement } from '@angular/compiler';
 })
 export class TallerService {
     clientes: Cliente[] = [];
+    clienteTem:Cliente[] = [];
+    clienteTem2:Cliente[] = [];
+
+    
     constructor() {
     }
 
@@ -27,10 +31,7 @@ export class TallerService {
         return this.clientes;
     }
 
-    getCliente()
-    {
-        return this.clientes;
-    }
+    
 
     eliminarCliente( dui: string ) {
         this.clientes = this.clientes.filter( listaCliente => listaCliente.dui !== dui );
@@ -39,9 +40,58 @@ export class TallerService {
         return this.clientes;
     }
 
+    actualizarVisitas(dui:string){
+
+         this.clienteTem = this.clientes.filter(visitaCliente=>visitaCliente.dui===dui);
+
+         this.eliminarCliente(dui);
+         this.clienteTem=this.clienteTem.map((dato:Cliente)=>{
+              
+            if(dato.dui === dui){
+                
+                dato.visita = dato.visita+1;
+                
+              }
+              return dato;
+            });
+         
+         
+
+         return this.clienteTem;
+
+
+    }
 
 
 
+    monto:number;
+    calculoPago(pago:number,dui:string){
+
+        this.clientes.map((dato:Cliente)=>{
+
+            if (dato.dui===dui) {
+                if (dato.visita>=0 &&dato.visita<3) {
+                    this.monto=pago;
+
+                    return this.monto;
+                }
+                else if (dato.visita>=3 &&dato.visita<4) {
+                    let desc= 0;          
+                    desc=pago*0.05;
+
+                    return this.monto = pago-desc;
+                }
+                else if (dato.visita>=4 ) {
+                    let desc= 0;          
+                    desc=pago*0.10;
+                    return this.monto= pago-desc;
+                }
+                
+            }
+        });
+
+        return this.monto;
+    }
 
 
 

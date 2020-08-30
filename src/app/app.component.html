@@ -12,6 +12,7 @@
 
       </div>
     </div>
+    <i class="fas fa-info-circle float-right"></i>
   </div>
 </div>
 
@@ -55,15 +56,15 @@
   
   
             </div>
+
+            <input class="form-control"
+                       type="text" 
+                       placeholder="Ingrese el costo de reparacion en $"
+                       [ngModel]="cliente.visita"
+                       name="visita"
+                       #visita="ngModel" hidden>
   
-          <!--<div id="prueba3"  class="form-group ">
-          <label class="col-4 col-form-label">Costo de Reparacion:</label>
-          <div class="col-6">
-            <input class="form-control" type="text" placeholder="Ingrese el costo de reparacion en $"
-              formControlName="nombre">
-  
-          </div>
-        </div> -->
+         
   
   
   
