@@ -8,13 +8,16 @@
     <div class="form-group ">
       <label class="col-4 col-form-label">Buscador</label>
       <div class="col-6">
-        <input class="form-control" type="text" placeholder="Busque por medio de DUI" [ngModel] = "dui" >
+        <input class="form-control" type="text" placeholder="Busque por medio de DUI" [(ngModel)] = "dui" name= "dui">
 
       </div>
     </div>
     <i class="fas fa-info-circle float-right"></i>
+    <label for="">{{ dui }}</label>
   </div>
 </div>
+
+
 
 
 

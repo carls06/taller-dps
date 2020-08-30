@@ -8,6 +8,11 @@ export class FilterPipe implements PipeTransform {
 
   transform(cliente: Cliente[], dui: string): Cliente[] {
 
+    console.log(cliente);
+    console.log("dui", dui);
+    
+    
+
     if (dui === "") {
       return cliente;
     } else {
